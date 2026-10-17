@@ -4,6 +4,8 @@ from collections.abc import Callable
 
 from gi.repository import Adw, Gtk
 
+from hyprmod import atrium
+
 from hyprmod.ui.icons import (
     AUTOSTART_ICON,
     BINDS_ICON,
@@ -190,6 +192,14 @@ class Sidebar:
             if group is None:
                 return
             add_row(listbox, group_id, group["label"], group.get("icon"))
+
+        # Atrium desktop first: what the desktop itself looks and behaves like
+        if atrium.available():
+            desktop = new_category("Desktop")
+            add_row(desktop, "atrium_appearance", "Appearance", "applications-graphics-symbolic")
+            add_row(desktop, "atrium_notifications", "Notifications", "preferences-system-notifications-symbolic")
+            add_row(desktop, "atrium_plugins", "Desktop Plugins", "application-x-addon-symbolic")
+            add_row(desktop, "atrium_updates", "Updates", "software-update-available-symbolic")
 
         look_and_feel = new_category("Look & Feel")
         add_schema_row(look_and_feel, "general")

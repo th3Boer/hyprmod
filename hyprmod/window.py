@@ -50,6 +50,7 @@ from hyprmod.ui.options import digits_for_step
 from hyprmod.ui.pending_chip import PendingChipGroup
 from hyprmod.ui.search import MIN_QUERY_LENGTH, SearchPage
 from hyprmod.ui.shortcuts import build_shortcuts_window
+from hyprmod import atrium
 from hyprmod.ui.sidebar import Sidebar
 from hyprmod.ui.timer import Timer
 
@@ -424,6 +425,24 @@ class HyprModWindow(Adw.ApplicationWindow):
             header = self._make_page_header(title, with_pending_chip=with_chip)
             self._page_stack.add_named(page.build(header=header), slug)
             self._page_titles[slug] = title
+
+        # Atrium desktop: its own pages (themes, notifications, plugins,
+        # updates), only when the ``atrium`` CLI exists (hyprmod/atrium)
+        if atrium.available():
+            from hyprmod.atrium import pages as atrium_pages
+
+            atrium_specs = [
+                (atrium_pages.AppearancePage, "atrium_appearance", "Appearance"),
+                (atrium_pages.NotificationsPage, "atrium_notifications", "Notifications"),
+                (atrium_pages.PluginsPage, "atrium_plugins", "Desktop Plugins"),
+                (atrium_pages.UpdatesPage, "atrium_updates", "Updates"),
+            ]
+            for cls, slug, title in atrium_specs:
+                page = cls(self)
+                setattr(self, "_" + slug + "_page", page)
+                header = self._make_page_header(title, with_pending_chip=False)
+                self._page_stack.add_named(page.build(header=header), slug)
+                self._page_titles[slug] = title
 
         return groups, groups_by_id
 
@@ -953,6 +972,13 @@ class HyprModWindow(Adw.ApplicationWindow):
 
     def _on_sidebar_selected(self, group_id: str):
         self.show_page(group_id)
+
+    def page_names(self) -> set[str]:
+        """Every page that ``show_page`` can open."""
+        return set(self._page_titles)
+
+    def select_sidebar(self, group_id: str):
+        self._sidebar.select_row(group_id)
 
     # -- Option changes --
 

@@ -78,6 +78,14 @@ class HyprModApp(Adw.Application):
 
             OnboardingDialog(on_setup=_on_setup).present(win)
 
+        page = getattr(self, "start_page", None)
+        if page:
+            self.start_page = None
+            slug = page if page in win.page_names() else "atrium_" + page
+            if slug in win.page_names():
+                win.show_page(slug)
+                win.select_sidebar(slug)
+
         win.present()
 
     def _show_config_error(self, message: str) -> None:
@@ -111,7 +119,16 @@ def main():
     if args and not args[0].startswith("-"):
         return cli.run(args)
 
+    # --atrium-page PAGE: open on that page (`atrium settings appearance`);
+    # taken out before GTK parses the remaining flags
+    start_page = None
+    if "--atrium-page" in args:
+        i = args.index("--atrium-page")
+        start_page = args[i + 1] if i + 1 < len(args) else None
+        del sys.argv[1 + i : 1 + i + 2]
+
     app = HyprModApp()
+    app.start_page = start_page
 
     # Route SIGINT/SIGTERM through the GLib main loop so Ctrl-C from the
     # terminal (or `kill`) shuts the app down cleanly. Python's default
