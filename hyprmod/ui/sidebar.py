@@ -106,7 +106,7 @@ class Sidebar:
         self.nav_page = self._build()
 
     def _build(self) -> Adw.NavigationPage:
-        nav_page = Adw.NavigationPage(title="HyprMod")
+        nav_page = Adw.NavigationPage(title="Settings")
         toolbar = Adw.ToolbarView()
         header = Adw.HeaderBar()
         header.set_show_title(True)
@@ -136,7 +136,7 @@ class Sidebar:
         self._pinned_list.append(profiles_row)
         self._rows_by_id["profiles"] = profiles_row
 
-        settings_row = SidebarRow(group_id="settings", title="Settings")
+        settings_row = SidebarRow(group_id="settings", title="Preferences")
         settings_row.set_activatable(True)
         settings_row.add_prefix(Gtk.Image.new_from_icon_name(SETTINGS_ICON))
         self._pinned_list.append(settings_row)

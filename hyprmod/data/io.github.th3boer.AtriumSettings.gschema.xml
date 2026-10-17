@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="io.github.bluemancz.hyprmod" path="/io/github/bluemancz/hyprmod/">
+  <schema id="io.github.th3boer.AtriumSettings" path="/io/github/th3boer/AtriumSettings/">
     <key name="auto-save" type="b">
       <default>false</default>
       <summary>Auto-save</summary>

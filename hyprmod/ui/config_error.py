@@ -25,7 +25,7 @@ def build_config_error_window(
     *message* is the parser's own text, which already names the file and
     the offending line.
     """
-    window = Adw.ApplicationWindow(application=application, title="HyprMod")
+    window = Adw.ApplicationWindow(application=application, title="Settings")
     window.set_default_size(700, 500)
 
     view = Adw.ToolbarView()

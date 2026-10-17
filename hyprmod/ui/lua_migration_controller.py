@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 
 
 # Persisted "user clicked Don't show again" flag — schema in
-# ``hyprmod/data/io.github.bluemancz.hyprmod.gschema.xml``.
+# ``hyprmod/data/io.github.th3boer.AtriumSettings.gschema.xml``.
 _DISMISSED_KEY = "lua-migration-banner-dismissed"
 
 # Window-scoped GIO action name. Referenced as ``win.<ACTION_NAME>`` by

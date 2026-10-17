@@ -12,15 +12,15 @@ from hyprland_schema import HYPRLAND_VERSION
 from hyprmod.constants import APPLICATION_ID
 from hyprmod.core.bug_report import REPO_URL, build_bug_report_url, hyprmod_version
 
-APPLICATION_NAME = "HyprMod"
-DEVELOPER_NAME = "Ivo Šmerek"
-COPYRIGHT = "© 2026 Ivo Šmerek"
-COMMENTS = "A native GTK4/libadwaita settings app for Hyprland"
+APPLICATION_NAME = "Settings"
+DEVELOPER_NAME = "Atrium"
+COPYRIGHT = "© 2026 Ivo Šmerek (HyprMod), Atrium changes © 2026 Daniel Bauer"
+COMMENTS = "Settings for the Atrium desktop on Hyprland.\nBased on HyprMod by Ivo Šmerek (GPL-3.0)."
 
 # Adw.AboutDialog renders entries in the ``developers`` list as clickable
 # links when they match the "Name URL" format. Keep the handle in the URL
 # so users can reach the author's GitHub profile from the Credits tab.
-DEVELOPERS = ["Ivo Šmerek https://github.com/BlueManCZ"]
+DEVELOPERS = ["Ivo Šmerek (HyprMod) https://github.com/BlueManCZ", "Daniel Bauer (Atrium) https://github.com/th3Boer"]
 
 
 def build_about_dialog(running_hyprland_version: str | None = None) -> Adw.AboutDialog:
@@ -47,7 +47,7 @@ def build_about_dialog(running_hyprland_version: str | None = None) -> Adw.About
     # debug_info goes into the Troubleshooting section — give bug reporters
     # both numbers unambiguously, regardless of detection state.
     debug_info = (
-        f"HyprMod {version}\n"
+        f"Settings {version} (HyprMod fork th3Boer/hyprmod, branch atrium)\n"
         f"Hyprland (running): {running or 'not detected'}\n"
         f"Hyprland schema (bundled): {schema_version}"
     )

@@ -69,7 +69,7 @@ class HyprModWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title("HyprMod")
+        self.set_title("Settings")
         self.set_default_size(900, 650)
 
         self._settings = open_settings()
@@ -414,7 +414,7 @@ class HyprModWindow(Adw.ApplicationWindow):
             (LayoutsPage, "_layouts_page", "layouts", "Layouts"),
             (ProfilesPage, "_profiles_page", "profiles", "Profiles"),
             (PendingChangesPage, "_pending_page", "pending", "Pending Changes"),
-            (SettingsPage, "_settings_page", "settings", "Settings"),
+            (SettingsPage, "_settings_page", "settings", "Preferences"),
         ]
         for cls, attr, slug, title in standalone_page_specs:
             page = cls(self)

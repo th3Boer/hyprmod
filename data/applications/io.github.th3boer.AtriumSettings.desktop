@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Settings
+GenericName=Desktop Settings
+Comment=Settings for the Atrium desktop: appearance, notifications, windows, keyboard, displays
+Exec=hyprmod
+Icon=io.github.th3boer.AtriumSettings
+Terminal=false
+Categories=Settings;DesktopSettings;GTK;
+Keywords=settings;preferences;appearance;theme;notifications;hyprland;monitors;keybinds;
+StartupNotify=true
+StartupWMClass=io.github.th3boer.AtriumSettings

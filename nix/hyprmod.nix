@@ -146,11 +146,11 @@ python3Packages.buildPythonApplication {
   '';
 
   postInstall = ''
-    install -Dm0644 data/applications/io.github.bluemancz.hyprmod.desktop \
+    install -Dm0644 data/applications/io.github.th3boer.AtriumSettings.desktop \
       -t $out/share/applications
-    install -Dm0644 data/icons/hicolor/scalable/apps/io.github.bluemancz.hyprmod.svg \
+    install -Dm0644 data/icons/hicolor/scalable/apps/io.github.th3boer.AtriumSettings.svg \
       -t $out/share/icons/hicolor/scalable/apps
-    install -Dm0644 data/metainfo/io.github.bluemancz.hyprmod.metainfo.xml \
+    install -Dm0644 data/metainfo/io.github.th3boer.AtriumSettings.metainfo.xml \
       -t $out/share/metainfo
   '';
 

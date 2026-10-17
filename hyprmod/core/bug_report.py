@@ -14,7 +14,8 @@ from hyprland_schema import HYPRLAND_VERSION
 
 from hyprmod.core import config
 
-REPO_URL = "https://github.com/BlueManCZ/hyprmod"
+REPO_URL = "https://github.com/th3Boer/hyprmod"
+UPSTREAM_URL = "https://github.com/BlueManCZ/hyprmod"
 ISSUE_URL = f"{REPO_URL}/issues"
 
 # A whole error message pasted into the issue title balloons it; cap the
