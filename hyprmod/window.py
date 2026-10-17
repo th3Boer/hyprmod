@@ -973,6 +973,9 @@ class HyprModWindow(Adw.ApplicationWindow):
     def _on_sidebar_selected(self, group_id: str):
         self.show_page(group_id)
 
+    def selected_page(self) -> str | None:
+        return self._sidebar.get_selected_group_id()
+
     def page_names(self) -> set[str]:
         """Every page that ``show_page`` can open."""
         return set(self._page_titles)
