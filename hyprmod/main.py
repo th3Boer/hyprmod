@@ -83,8 +83,7 @@ class HyprModApp(Adw.Application):
             self.start_page = None
             slug = page if page in win.page_names() else "atrium_" + page
             if slug in win.page_names():
-                win.show_page(slug)
-                win.select_sidebar(slug)
+                win.open_page(slug)
 
         win.present()
 

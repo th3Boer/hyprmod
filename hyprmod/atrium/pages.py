@@ -155,7 +155,7 @@ class AppearancePage(_Page):
             ["theme", "knob", f"gtk_style={'atrium' if r.get_active() else 'default'}"]))
         look.add(design)
         radius = Adw.SpinRow(title="Corner radius of the shell",
-                             subtitle="Window corners and gaps are under Look & Feel",
+                             subtitle="Window corners and gaps are under Look &amp; Feel",
                              adjustment=Gtk.Adjustment(lower=0, upper=32, step_increment=1, value=cur.get("radius", 14)))
         radius.connect("notify::value", lambda r, _p: self._loading or self._knob(["theme", "knob", f"radius={int(r.get_value())}"]))
         look.add(radius)

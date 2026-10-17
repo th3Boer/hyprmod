@@ -977,8 +977,14 @@ class HyprModWindow(Adw.ApplicationWindow):
         """Every page that ``show_page`` can open."""
         return set(self._page_titles)
 
-    def select_sidebar(self, group_id: str):
-        self._sidebar.select_row(group_id)
+    def open_page(self, group_id: str):
+        """Show a page and mark its sidebar row (a row that is already
+        selected is left alone: re-selecting it made GTK hand the selection
+        to the pinned list)."""
+        if self._sidebar.get_selected_group_id() != group_id:
+            self._sidebar.deselect_all()
+            self._sidebar.select_row(group_id)
+        self.show_page(group_id)
 
     # -- Option changes --
 
