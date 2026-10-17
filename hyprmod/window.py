@@ -984,6 +984,7 @@ class HyprModWindow(Adw.ApplicationWindow):
         if self._sidebar.get_selected_group_id() != group_id:
             self._sidebar.deselect_all()
             self._sidebar.select_row(group_id)
+        self._sidebar.focus_row(group_id)
         self.show_page(group_id)
 
     # -- Option changes --

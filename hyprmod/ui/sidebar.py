@@ -254,6 +254,12 @@ class Sidebar:
             if isinstance(parent_list, Gtk.ListBox):
                 parent_list.select_row(row)
 
+    def focus_row(self, group_id: str) -> None:
+        """Put the keyboard focus on a row (arrow keys then start from it)."""
+        row = self._rows_by_id.get(group_id)
+        if row:
+            row.grab_focus()
+
     def deselect_all(self) -> None:
         """Deselect all rows in all sidebar lists."""
         for sl in self._lists:

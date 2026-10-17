@@ -78,14 +78,16 @@ class HyprModApp(Adw.Application):
 
             OnboardingDialog(on_setup=_on_setup).present(win)
 
+        win.present()
+
+        # --atrium-page: after present(), which moves the keyboard focus into
+        # the sidebar (and a focused sidebar row gets selected)
         page = getattr(self, "start_page", None)
         if page:
             self.start_page = None
             slug = page if page in win.page_names() else "atrium_" + page
             if slug in win.page_names():
-                win.open_page(slug)
-
-        win.present()
+                GLib.idle_add(lambda: win.open_page(slug) and False)
 
     def _show_config_error(self, message: str) -> None:
         """Put the config-error window up in place of the main window.
